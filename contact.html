@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactez-nous</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .contact-form, .contact-info {
+            flex: 1 1 45%;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-form label {
+            margin: 10px 0 5px;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .contact-form button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .contact-form button:hover {
+            background-color: #218838;
+        }
+
+        .contact-info h3 {
+            margin-top: 0;
+        }
+
+        .contact-info p {
+            margin: 5px 0;
+        }
+
+        .map {
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Contactez-nous</h1>
+    </header>
+
+    <section>
+        <div class="contact-container">
+            <!-- Formulaire de contact -->
+            <div class="contact-form">
+                <h2>Envoyez-nous un message</h2>
+                <form id="contactForm">
+                    <label for="name">Nom :</label>
+                    <input type="text" id="name" name="name" placeholder="Votre nom complet" required>
+
+                    <label for="email">E-mail :</label>
+                    <input type="email" id="email" name="email" placeholder="Votre e-mail" required>
+
+                    <label for="message">Message :</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Votre message" required></textarea>
+
+                    <button type="button" id="sendMessage">Envoyer</button>
+                </form>
+            </div>
+
+            <!-- Informations de contact -->
+            <div class="contact-info">
+                <h2>Nos coordonnées</h2>
+                <p><strong>Adresse :</strong> Secteur 29, Bobo Dioulasso, BURKINA FASO</p>
+                <p><strong>Téléphone :</strong> 00226 76 41 25 14</p>
+                <p><strong>Email :</strong> roisangoulais@gmail.com</p>
+                <p><strong>Horaires :</strong> Lundi - Vendredi, 8h - 18h</p>
+            </div>
+        </div>
+
+        <!-- Carte Google Maps -->
+        <div class="map">
+            <h2>Localisation</h2>
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345093686!2d144.95373631550405!3d-37.81627974206165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0x5045675218ce740!2sMelbourne%20VIC%2C%20Australie!5e0!3m2!1sfr!2sfr!4v1617071930070!5m2!1sfr!2sfr" 
+                allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById("sendMessage").addEventListener("click", function () {
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const message = document.getElementById("message").value;
+
+            if (name && email && message) {
+                alert(`Merci ${name}, votre message a été envoyé avec succès !`);
+                document.getElementById("contactForm").reset();
+            } else {
+                alert("Veuillez remplir tous les champs avant d'envoyer votre message.");
+            }
+        });
+    </script>
+</body>
+</html>

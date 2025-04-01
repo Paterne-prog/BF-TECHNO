@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Énergie Solaire - Solutions Durables</title>
+    <link rel="stylesheet" href="ES.css">
+    <script src="ES.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="header-bg">
+            <div class="overlay"></div>
+            <div class="content">
+                <h1>Énergie Solaire pour un Futur Durable</h1>
+                <p>Solutions écologiques et économiques adaptées à vos besoins</p>
+            </div>
+        </div>
+    </header>
+    <section class="presentation">
+        <h2>Notre Expertise</h2>
+        <p>Nous fournissons des solutions d'énergie solaire fiables et sur mesure pour les particuliers et les entreprises.</p>
+    </section>
+    <section class="features">
+        <h2>Nos Services</h2>
+        <div class="feature-list">
+            <div class="feature">
+                <h3>Installation de panneaux solaires</h3>
+                <p>Nous installons des systèmes photovoltaïques pour maximiser l'énergie captée.</p>
+            </div>
+            <div class="feature">
+                <h3>Maintenance et suivi</h3>
+                <p>Des services de maintenance pour garantir des performances optimales.</p>
+            </div>
+            <div class="feature">
+                <h3>Solutions de stockage</h3>
+                <p>Stockez votre énergie avec des batteries solaires performantes.</p>
+            </div>
+        </div>
+    </section>
+    <section class="benefits">
+        <h2>Pourquoi choisir l'énergie solaire ?</h2>
+        <div class="benefit-list">
+            <div class="benefit">
+                <h3>Économie d'énergie</h3>
+                <p>Réduisez considérablement vos factures d'électricité.</p>
+            </div>
+            <div class="benefit">
+                <h3>Énergie propre</h3>
+                <p>Contribuez à la préservation de l'environnement en utilisant une énergie renouvelable.</p>
+            </div>
+            <div class="benefit">
+                <h3>Indépendance énergétique</h3>
+                <p>Produisez votre propre électricité et réduisez votre dépendance au réseau.</p>
+            </div>
+        </div>
+    </section>
+    <section class="contact">
+        <h2>Contactez-nous</h2>
+        <p>Besoin d'un devis ou de conseils ? Contactez notre équipe d'experts.</p>
+        <a href="contact.html" class="btn">Nous contacter</a>
+    </section>
+
+    <section class="simulator">
+        <h2>Simulez vos Économies d'Énergie</h2>
+        <p>Découvrez combien vous pourriez économiser en passant à l'énergie solaire :</p>
+        <form id="solar-simulator">
+            <label for="monthly-bill">Facture mensuelle actuelle :</label>
+            <input type="number" id="monthly-bill" name="monthly-bill" placeholder="Ex : 100" required>
+            
+            <label for="sun-hours">Heures d'ensoleillement par jour :</label>
+            <input type="number" id="sun-hours" name="sun-hours" placeholder="Ex : 5" required>
+    
+            <button type="button" id="calculate-savings">Calculer</button>
+        </form>
+        <div id="simulation-result"></div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+    const { jsPDF } = window.jspdf;
+
+    document.getElementById('download-pdf').addEventListener('click', function () {
+        const monthlyBill = document.getElementById('monthly-bill').value;
+        const sunHours = document.getElementById('sun-hours').value;
+        const resultText = document.getElementById('simulation-result').textContent;
+
+        if (!monthlyBill || !sunHours || !resultText) {
+            alert("Veuillez d'abord calculer les économies avant de télécharger le rapport.");
+            return;
+        }
+
+        const pdf = new jsPDF();
+
+        // Titre du document
+        pdf.setFontSize(18);
+        pdf.text("Rapport d'Économies d'Énergie Solaire", 10, 20);
+
+        // Contenu du rapport
+        pdf.setFontSize(12);
+        pdf.text(`Facture mensuelle actuelle : ${monthlyBill} €`, 10, 40);
+        pdf.text(`Heures d'ensoleillement par jour : ${sunHours} h`, 10, 50);
+        pdf.text(resultText, 10, 70);
+
+        // Ajout d'une note
+        pdf.setFontSize(10);
+        pdf.text(
+            "Note : Ce calcul est une estimation basée sur des données générales. Les résultats réels peuvent varier.",
+            10,
+            90
+        );
+
+        // Téléchargement du PDF
+        pdf.save("rapport_economies_energie_solaire.pdf");
+    });
+</script>
+
+    
+    <footer>
+        <p>&copy; 2025 - Votre Entreprise | Énergie Solaire Durable</p>
+    </footer>
+</body>
+</html>
